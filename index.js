@@ -34,6 +34,12 @@ const
   bodyParser = require('body-parser'),
   app = express().use(bodyParser.json()); // creates express http server
 
+const picture_1 = 'https://static.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg';
+const picture_2 = 'https://static.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg';
+const picture_3 = 'https://static.pexels.com/photos/416160/pexels-photo-416160.jpeg';
+const picture_4 = 'https://static.pexels.com/photos/127028/pexels-photo-127028.jpeg';
+const picture_5 = 'https://static.pexels.com/photos/4602/jumping-cute-playing-animals.jpg';
+
 app.set('port', process.env.PORT || 5000);
 app.use(bodyParser.json());
 
@@ -130,9 +136,9 @@ function handleMessage(sender_psid, received_message) {
             // Create the payload for a basic text message, which
             // will be added to the body of our request to the Send API
             if (message.includes('top 10 trends')) {
-                response = {
-                    "text": `You want the top 10 trends!!`
-                }
+                const title = 'You want the top 10 trends!!';
+                const message = 'Click on a different factors for a different analysis!';
+                reponse = getImageResponse(picture_1, title, message);
             } else {
                 response = {
                     "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
@@ -171,6 +177,35 @@ function handleMessage(sender_psid, received_message) {
 
   // Send the response message
   callSendAPI(sender_psid, response);
+}
+
+function getImageResponse(imageUrl, title, message){
+    return response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": title,
+                        "subtitle": message,
+                        "image_url": imageUrl,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Yes!",
+                                "payload": "yes"
+                            }, {
+                                "type": "postback",
+                                "title": "No!",
+                                "payload": "no"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
 }
 
 function handlePostback(sender_psid, received_postback) {
