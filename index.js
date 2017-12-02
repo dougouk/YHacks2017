@@ -124,8 +124,14 @@ function handleMessage(sender_psid, received_message) {
         // Create the payload for a basic text message, which
         // will be added to the body of our request to the Send API
         if (message.includes('top 10 trends')) {
+            // Send a text blurb
             const initialResponse = {'text': 'Here are the top 10 trending projects!' };
             callSendAPI(sender_psid, initialResponse);
+
+            // send image right below
+            const imageResponse = getImageResponse(picture_3);
+            callSendAPI(sender_psid, imageResponse);
+
             const title = 'Top 10 Categories';
             const message = 'Click on a different factors for a different analysis!';
             response = getTop10Trending(picture_3, title, message);
@@ -204,7 +210,7 @@ function callSendAPI(sender_psid, response) {
     Our Functions!!
 */
 
-function getImageResponse(imageUrl, title, message) {
+function getImageResponse(imageUrl) {
     return {
         "attachment": {
             "type": "template",
@@ -212,20 +218,7 @@ function getImageResponse(imageUrl, title, message) {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": title,
-                        "subtitle": message,
                         "image_url": imageUrl,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Yes!",
-                                "payload": "yes"
-                            }, {
-                                "type": "postback",
-                                "title": "No!",
-                                "payload": "no"
-                            }
-                        ]
                     }
                 ]
             }
@@ -247,7 +240,6 @@ function getTop10Trending(graphImage, title, message) {
                     {
                         "title": title,
                         "subtitle": message,
-                        "image_url": graphImage,
                         "buttons": [
                             {
                                 "type": "postback",
