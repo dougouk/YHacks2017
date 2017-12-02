@@ -215,8 +215,7 @@ function getImageResponse(imageUrl) {
         "attachment": {
             "type": "image",
             "payload": {
-                "url": imageUrl,
-                'is_resuable': true,
+                "url": imageUrl
             }
         }
     }
