@@ -29,8 +29,8 @@ const request = require('request'),
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json()); // creates express http server
 
-const picture_1 = 'https://static.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg';
-const picture_2 = 'https://static.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg';
+const picture_1 = './images/kitty_1.jpeg';
+const picture_2 = './images/kitty_2.jpeg';
 const picture_3 = 'https://static.pexels.com/photos/416160/pexels-photo-416160.jpeg';
 const picture_4 = 'https://static.pexels.com/photos/127028/pexels-photo-127028.jpeg';
 const picture_5 = 'https://static.pexels.com/photos/4602/jumping-cute-playing-animals.jpg';
