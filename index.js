@@ -30,8 +30,8 @@ const request = require('request'),
     app = express().use(bodyParser.json()); // creates express http server
     app.use(express.static(__dirname + '/public'));
 
-const picture_1 = '/images/kitty_1.jpeg';
-const picture_2 = '/images/kitty_2.jpeg';
+const picture_1 = '/kitty_1.jpeg';
+const picture_2 = '/kitty_2.jpeg';
 const picture_3 = 'https://static.pexels.com/photos/416160/pexels-photo-416160.jpeg';
 const picture_4 = 'https://static.pexels.com/photos/127028/pexels-photo-127028.jpeg';
 const picture_5 = 'https://static.pexels.com/photos/4602/jumping-cute-playing-animals.jpg';
