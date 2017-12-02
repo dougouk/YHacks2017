@@ -135,7 +135,7 @@ function handleMessage(sender_psid, received_message) {
             if (message.includes('top 10 trends')) {
                 const title = 'You want the top 10 trends!!';
                 const message = 'Click on a different factors for a different analysis!';
-                response = getImageResponse(picture_1, title, image);
+                response = getImageResponse(picture_1, title, message);
             } else {
                 response = {
                     "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
