@@ -35,6 +35,7 @@ const
   app = express().use(bodyParser.json()); // creates express http server
 
 app.set('port', process.env.PORT || 5000);
+app.use(bodyParser.json());
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || app.get('port'), function() {
@@ -85,7 +86,11 @@ app.post('/webhook', (req, res) => {
   }
 
 });
-
+// 
+// // server index page
+// app.get('/', function(req, res) {
+//     res.send('deployed');
+// })
 // Accepts GET requests at the /webhook endpoint
 app.get('/webhook', (req, res) => {
 
