@@ -35,7 +35,7 @@ const
   bodyParser = require('body-parser'),
   app = express().use(bodyParser.json()); // creates express http server
 
-  app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 5000);
 
 // Sets server port and logs message on success
 app.listen(app.get('port'), function() {

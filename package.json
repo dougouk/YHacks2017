@@ -4,7 +4,7 @@
   "description": "An example webhook for Facebook Messenger quick start tutorial.",
   "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node fb_bot.js"
   },
   "repository": {
     "type": "git",
@@ -14,11 +14,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "express": "^4.13.4",
-    "localtunnel": "^1.8.3",
-    "request": "^2.72.0",
     "config": "^1.20.4",
-    "ejs": "^2.4.2"
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "fb-bot-framework": "^0.3.0",
+    "localtunnel": "^1.8.3",
+    "request": "^2.72.0"
   },
   "engines": {
     "node": "~8.9.1"
