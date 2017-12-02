@@ -23,7 +23,6 @@
 'use strict';
 
 //TODO put env vars in a file
-process.env.PORT = 5000;
 process.env.PAGE_ACCESS_TOKEN = "EAAFTupF6DtMBADRTdRcbEnhFyyRGyaN1DXhhGnQWzib40ZAFsRiGpeEZCHuJ2ZBzWVdBzxG1UolX7xqZCdbZBVgDV4rZA4euJzFpXvdst9lXgaqf7RlKwvrTuVBgMPMnJ83kEJzXAd1pyl8OimGYd3HPgW7D0OpIZA6HAeoi9VpJwZDZD";
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
@@ -38,7 +37,7 @@ const
 app.set('port', process.env.PORT || 5000);
 
 // Sets server port and logs message on success
-app.listen(app.get('port'), function() {
+app.listen(process.env.PORT || app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 // Accepts POST requests at /webhook endpoint
