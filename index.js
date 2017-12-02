@@ -127,7 +127,7 @@ function handleMessage(sender_psid, received_message) {
             callSendAPI(sender_psid, initialResponse);
             const title = 'You want the top 10 trends!!';
             const message = 'Click on a different factors for a different analysis!';
-            response = getTop10Trending(picture_1, title, message);
+            response = getTop10Trending(picture_3, title, message);
             callSendAPI(sender_psid, response);
         } else {
             response = {
