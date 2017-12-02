@@ -148,7 +148,7 @@ function handlePostback(sender_psid, received_postback) {
     // Get the payload for the postback
     let payload = received_postback.payload;
 
-    const title = 'You want the top 10 trends!!';
+    const title = 'Here are the results based on ' + payload;
     const message = 'Click on a different factors for a different analysis!';
 
     // Set the response based on the postback payload
