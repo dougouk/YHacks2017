@@ -177,7 +177,7 @@ function handleMessage(sender_psid, received_message) {
 }
 
 function getImageResponse(imageUrl, title, message) {
-    return response = {
+    return {
         "attachment": {
             "type": "template",
             "payload": {
