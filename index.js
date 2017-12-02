@@ -262,7 +262,7 @@ function getTop10Trending(graphImage, title, message) {
                     {
                         "title": title,
                         "subtitle": message,
-                        "image_url": imageUrl,
+                        "image_url": graphImage,
                         "buttons": [
                             {
                                 "type": "postback",
