@@ -160,10 +160,10 @@ function handlePostback(sender_psid, received_postback) {
     // Set the response based on the postback payload
     switch(payload) {
         case TIME_TO_100K:
-            response = getTop10Trending(picture_2, title, message);
+            response = getTop10Trending(picture_4, title, message);
             break;
         case TOTAL_FUNDED:
-            response = getTop10Trending(picture_1, title, message);
+            response = getTop10Trending(picture_5, title, message);
             break;
         case NUM_OF_PLEDGES:
             response = getTop10Trending(picture_3, title, message);
@@ -240,6 +240,7 @@ function getTop10Trending(graphImage, title, message) {
                     {
                         "title": title,
                         "subtitle": message,
+                        'image_url': graphImage,
                         "buttons": [
                             {
                                 "type": "postback",
