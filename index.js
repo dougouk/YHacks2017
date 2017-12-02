@@ -28,6 +28,7 @@ const request = require('request'),
     express = require('express'),
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json()); // creates express http server
+    app.use(express.static(__dirname));
 
 const picture_1 = './images/kitty_1.jpeg';
 const picture_2 = './images/kitty_2.jpeg';
@@ -125,7 +126,7 @@ function handleMessage(sender_psid, received_message) {
         if (message.includes('top 10 trends')) {
             const initialResponse = {'text': 'Here are the top 10 trending projects!' };
             callSendAPI(sender_psid, initialResponse);
-            const title = 'You want the top 10 trends!!';
+            const title = 'Top 10 Categories';
             const message = 'Click on a different factors for a different analysis!';
             response = getTop10Trending(picture_3, title, message);
             callSendAPI(sender_psid, response);
