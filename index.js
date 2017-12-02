@@ -32,12 +32,15 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const
   request = require('request'),
   express = require('express'),
-  body_parser = require('body-parser'),
-  app = express().use(body_parser.json()); // creates express http server
+  bodyParser = require('body-parser'),
+  app = express().use(bodyParser.json()); // creates express http server
+
+  app.set('port', process.env.PORT || 5000);
 
 // Sets server port and logs message on success
-app.listen(process.env.PORT, () => console.log('webhook is listening at ' + process.env.PORT));
-
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
 // Accepts POST requests at /webhook endpoint
 app.post('/webhook', (req, res) => {
     console.log('posting webhook');
@@ -53,7 +56,7 @@ app.post('/webhook', (req, res) => {
     body.entry.forEach(function(entry) {
 
 
-      // Get the webhook event. entry.messaging is an array, but 
+      // Get the webhook event. entry.messaging is an array, but
       // will only ever contain one event, so we get index 0
       let webhook_event = entry.messaging[0];
       console.log(webhook_event);
