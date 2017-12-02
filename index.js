@@ -85,11 +85,7 @@ app.post('/webhook', (req, res) => {
     }
 
 });
-//
-//  server index page
-// app.get('/', function(req, res) {
-//     res.send('deployed');
-// })
+
 // Accepts GET requests at the /webhook endpoint
 app.get('/webhook', (req, res) => {
 
@@ -127,47 +123,22 @@ function handleMessage(sender_psid, received_message) {
         // Create the payload for a basic text message, which
         // will be added to the body of our request to the Send API
         if (message.includes('top 10 trends')) {
+            const initialResponse = {'text': 'Here are the top 10 trending projects!' };
+            callSendAPI(sender_psid, initialResponse);
             const title = 'You want the top 10 trends!!';
             const message = 'Click on a different factors for a different analysis!';
             response = getTop10Trending(picture_1, title, message);
+            callSendAPI(sender_psid, response);
         } else {
             response = {
                 "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
             }
-        }
-    } else if (received_message.attachments) {
-        // Get the URL of the message attachment
-        let attachment_url = received_message.attachments[0].payload.url;
-        response = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [
-                        {
-                            "title": "Is this the right picture?",
-                            "subtitle": "Tap a button to answer.",
-                            "image_url": attachment_url,
-                            "buttons": [
-                                {
-                                    "type": "postback",
-                                    "title": "Yes!",
-                                    "payload": "yes"
-                                }, {
-                                    "type": "postback",
-                                    "title": "No!",
-                                    "payload": "no"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
+            callSendAPI(sender_psid, response);
         }
     }
 
     // Send the response message
-    callSendAPI(sender_psid, response);
+    // callSendAPI(sender_psid, response);
 }
 
 function handlePostback(sender_psid, received_postback) {
