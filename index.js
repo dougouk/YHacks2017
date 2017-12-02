@@ -40,6 +40,7 @@ app.set('port', process.env.PORT || 5000);
 app.listen(process.env.PORT || app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
 // Accepts POST requests at /webhook endpoint
 app.post('/webhook', (req, res) => {
     console.log('posting webhook');
@@ -85,10 +86,6 @@ app.post('/webhook', (req, res) => {
 
 });
 
-// server index page
-app.get('/', function(req, res) {
-    res.send('deployed');
-})
 // Accepts GET requests at the /webhook endpoint
 app.get('/webhook', (req, res) => {
 
