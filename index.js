@@ -135,7 +135,32 @@ function handleMessage(sender_psid, received_message) {
             if (message.includes('top 10 trends')) {
                 const title = 'You want the top 10 trends!!';
                 const message = 'Click on a different factors for a different analysis!';
-                reponse = getImageResponse(picture_1, title, message);
+                reponse =  {
+                    "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "generic",
+                            "elements": [
+                                {
+                                    "title": title,
+                                    "subtitle": message,
+                                    "image_url": imageUrl,
+                                    "buttons": [
+                                        {
+                                            "type": "postback",
+                                            "title": "Yes!",
+                                            "payload": "yes"
+                                        }, {
+                                            "type": "postback",
+                                            "title": "No!",
+                                            "payload": "no"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                }
             } else {
                 response = {
                     "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
