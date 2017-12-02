@@ -22,9 +22,6 @@
 
 'use strict';
 
-//TODO put env vars in a file
-process.env.PAGE_ACCESS_TOKEN = "EAAFTupF6DtMBADRTdRcbEnhFyyRGyaN1DXhhGnQWzib40ZAFsRiGpeEZCHuJ2ZBzWVdBzxG1UolX7xqZCdbZBVgDV4rZA4euJzFpXvdst9lXgaqf7RlKwvrTuVBgMPMnJ83kEJzXAd1pyl8OimGYd3HPgW7D0OpIZA6HAeoi9VpJwZDZD";
-
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 // Imports dependencies and set up http server
@@ -179,7 +176,7 @@ function handleMessage(sender_psid, received_message) {
   callSendAPI(sender_psid, response);
 }
 
-function getImageResponse(imageUrl, title, message){
+function getImageResponse(imageUrl, title, message) {
     return response = {
         "attachment": {
             "type": "template",
