@@ -176,35 +176,6 @@ function handleMessage(sender_psid, received_message) {
   callSendAPI(sender_psid, response);
 }
 
-function getImageResponse(imageUrl, title, message) {
-    return {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [
-                    {
-                        "title": title,
-                        "subtitle": message,
-                        "image_url": imageUrl,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Yes!",
-                                "payload": "yes"
-                            }, {
-                                "type": "postback",
-                                "title": "No!",
-                                "payload": "no"
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    }
-}
-
 function handlePostback(sender_psid, received_postback) {
   console.log('ok')
    let response;
@@ -243,4 +214,73 @@ function callSendAPI(sender_psid, response) {
       console.error("Unable to send message:" + err);
     }
   });
+}
+
+
+/*
+    Our Functions!!
+*/
+
+
+
+function getImageResponse(imageUrl, title, message) {
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": title,
+                        "subtitle": message,
+                        "image_url": imageUrl,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Yes!",
+                                "payload": "yes"
+                            }, {
+                                "type": "postback",
+                                "title": "No!",
+                                "payload": "no"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+
+function getTop10Trending(graphImage, title, message) {
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": title,
+                        "subtitle": message,
+                        "image_url": imageUrl,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Total funded",
+                                "payload": "total_funded"
+                            }, {
+                                "type": "postback",
+                                "title": "Number of pledges",
+                                "payload": "num_of_pledge"
+                            }, {
+                                "type": "postback",
+                                "title": "Time taken to raise more than $100,000",
+                                "payload": "time_to_100k"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
 }
