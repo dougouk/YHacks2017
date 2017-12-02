@@ -226,9 +226,9 @@ function getImageResponse(imageUrl) {
     }
 }
 
-const TOTAL_FUNDED = 'total_funded';
-const NUM_OF_PLEDGES = 'num_of_pledges';
-const TIME_TO_100K = 'time_to_100k';
+const TOTAL_FUNDED = 'Total Funded';
+const NUM_OF_PLEDGES = 'Number of Pledges';
+const TIME_TO_100K = '$100K Milestone';
 
 function getTop10Trending(graphImage, title, message) {
     return {
