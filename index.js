@@ -177,7 +177,7 @@ function handleMessage(sender_psid, received_message) {
 }
 
 function getImageResponse(imageUrl, title, message) {
-    return {
+    response = {
         "attachment": {
             "type": "template",
             "payload": {
@@ -202,7 +202,9 @@ function getImageResponse(imageUrl, title, message) {
                 ]
             }
         }
-    }
+    };
+
+    return response;
 }
 
 function handlePostback(sender_psid, received_postback) {
