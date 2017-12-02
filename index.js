@@ -259,7 +259,7 @@ function getTop10Trending(graphImage, title, message) {
                                 "payload": NUM_OF_PLEDGES
                             }, {
                                 "type": "postback",
-                                "title": "Time taken to raise more than $100,000",
+                                "title": "$100k Milestone",
                                 "payload": TIME_TO_100K
                             }
                         ]
