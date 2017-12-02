@@ -213,9 +213,14 @@ function callSendAPI(sender_psid, response) {
 function getImageResponse(imageUrl) {
     return {
         "attachment": {
-            "type": "image",
+            "type": "template",
             "payload": {
-                "url": imageUrl
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "image_url": imageUrl,
+                    }
+                ]
             }
         }
     }
