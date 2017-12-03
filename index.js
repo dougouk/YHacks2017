@@ -129,8 +129,8 @@ function handleMessage(sender_psid, received_message) {
             callSendAPI(sender_psid, initialResponse);
 
             // send image right below
-            // const imageResponse = getImageResponse(picture_3);
-            // callSendAPI(sender_psid, imageResponse);
+            const imageResponse = getImageResponse(picture_3);
+            callSendAPI(sender_psid, imageResponse);
 
             const title = 'Top 10 Categories';
             const message = 'Click on a different factors for a different analysis!';
@@ -279,7 +279,7 @@ function getTop10Trending(graphImage, title, message) {
                     {
                         "title": title,
                         "subtitle": message,
-                        'image_url': graphImage,
+                        // 'image_url': graphImage,
                         "buttons": [
                             {
                                 "type": "postback",
