@@ -341,7 +341,7 @@ function showTop5AudioProjects() {
                             {
                                 "title": "View",
                                 "type": "postback",
-                                'postback': SHOW_DETAILS_AUDIO_PROJECT
+                                "postback": SHOW_DETAILS_AUDIO_PROJECT
                             }
                         ]
                     }, {
@@ -351,7 +351,7 @@ function showTop5AudioProjects() {
                             {
                                 "title": "View",
                                 "type": "postback",
-                                'postback': SHOW_DETAILS_AUDIO_PROJECT
+                                "postback": SHOW_DETAILS_AUDIO_PROJECT
                             }
                         ]
                     }, {
@@ -361,7 +361,7 @@ function showTop5AudioProjects() {
                             {
                                 "title": "View",
                                 "type": "postback",
-                                'postback': SHOW_DETAILS_AUDIO_PROJECT
+                                "postback": SHOW_DETAILS_AUDIO_PROJECT
                             }
                         ]
                     }
