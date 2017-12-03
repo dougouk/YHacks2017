@@ -387,15 +387,9 @@ function getTop10Trending(graphImage, title, message) {
                         "title": title,
                         "subtitle": message,
                         'image_url': graphImage,
+                        'url': graphImage,
                         "buttons": [
                             {
-                                "type": "web_url",
-                                "url": 'https://petersfancyapparel.com/fallback',
-                                "title": "Enlarge photo",
-                                "webview_height_ratio": "full",
-                                "messenger_extensions": true,
-                                "fallback_url": "https://petersfancyapparel.com/fallback"
-                            }, {
                                 "type": "postback",
                                 "title": "Total funded",
                                 "payload": TOTAL_FUNDED
