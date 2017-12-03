@@ -43,6 +43,7 @@ app.use(bodyParser.json());
 // Sets server port and logs message on success
 app.listen(process.env.PORT || app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
+    callSendAPI(getWhiteListedDomains());
 });
 
 // Accepts POST requests at /webhook endpoint
@@ -248,6 +249,16 @@ function sendTypingAPI(requestBody) {
             console.error("Unable to send message:" + err);
         }
     });
+}
+
+function getWhiteListedDomains() {
+    return {
+        'whitelisted_domains': [
+            picture_3,
+            picture_4,
+            picture_5
+        ]
+    }
 }
 
 /*
