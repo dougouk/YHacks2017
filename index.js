@@ -466,7 +466,7 @@ const AUDIO1 = 'Audio1';
 const AUDIO2 = 'Audio2';
 const AUDIO3 = 'Audio3';
 
-function getTravelTitleMessage(title, message) {
+function getAudioTitleMessage(title, message) {
     const initialResponse = {"text": `*${title}*` };
     callSendAPI(sender_psid, initialResponse);
 
