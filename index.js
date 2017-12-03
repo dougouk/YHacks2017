@@ -221,12 +221,15 @@ function handlePostback(sender_psid, received_postback) {
             break;
         case AUDIO1:
             getAudioTitleMessage(title1, message1);
+            return;
             break;
         case AUDIO2:
             getAudioTitleMessage(title2, message1);
+            return;
             break;
         case AUDIO3:
             getAudioTitleMessage(title3, message1);
+            return;
             break;
         case 'yes':
             response = {
