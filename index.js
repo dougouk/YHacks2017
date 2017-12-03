@@ -318,7 +318,6 @@ const SHOW_DETAILS_AUDIO_PROJECT = 'New GABC Album Produced by John Evans!';
 
 function showTop5AudioProjects() {
     const projects = ['New GABC Album Produced by John Evans!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!'];
-
     return {
         "attachment": {
             "type": "template",
@@ -326,6 +325,8 @@ function showTop5AudioProjects() {
                 "template_type": "generic",
                 "elements": [
                     {
+                        "title": "Top 3 Projects in Audio",
+                        "subtitle": "Choose a project to see details!",
                         "buttons": [
                             {
                                 "type": "postback",
