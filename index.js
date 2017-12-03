@@ -129,8 +129,8 @@ function handleMessage(sender_psid, received_message) {
             callSendAPI(sender_psid, initialResponse);
 
             // send image right below
-            const imageResponse = getImageResponse(picture_3);
-            callSendAPI(sender_psid, imageResponse);
+            // const imageResponse = getImageResponse(picture_3);
+            // callSendAPI(sender_psid, imageResponse);
 
             const title = 'Top 10 Categories';
             const message = 'Click on a different factors for a different analysis!';
