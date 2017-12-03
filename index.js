@@ -145,8 +145,8 @@ function handleMessage(sender_psid, received_message) {
             };
             callSendAPI(sender_psid, initialResponse);
 
-            response = showTop5AudioProjects();
-            callSendAPI(sender_psid, response);
+            let audioResponse = showTop5AudioProjects();
+            callSendAPI(sender_psid, audioResponse);
         } else if (message.includes('start typing')) {
             startTyping(sender_psid);
         } else if (message.includes('stop typing')) {
