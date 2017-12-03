@@ -226,7 +226,7 @@ function callSendAPI(sender_psid, response) {
     });
 }
 
-function callSendAPI_setup(sender_psid, response) {
+function callSendAPI_setup(response) {
     // Send the HTTP request to the Messenger Platform
     request({
         "uri": "https://graph.facebook.com/v2.6/me/messages",
