@@ -210,6 +210,7 @@ function callSendAPI(sender_psid, response) {
     });
 }
 
+// Show the user that the bot is 'typing'
 function startTyping(senderPSID) {
     let requestBody = {
         'recipient': {
@@ -220,6 +221,7 @@ function startTyping(senderPSID) {
     sendTypingAPI(requestBody);
 }
 
+// Show the user that the bot has stopped typing
 function stopTyping(senderPSID) {
     let requestBody = {
         'recipient': {
@@ -296,7 +298,13 @@ function getTop10Trending(graphImage, title, message) {
                                 "title": "$100k Milestone",
                                 "payload": TIME_TO_100K
                             }
-                        ]
+                        ],
+                        'default_action': {
+                            'type': 'web url',
+                            'url': graphImage,
+                            'messenger_extensions': 'false',
+                            'webview_height_ratio': 'FULL'
+                        }
                     }
                 ]
             }
