@@ -146,8 +146,18 @@ function handleMessage(sender_psid, received_message) {
             callSendAPI(sender_psid, initialResponse);
             const projects = ['New GABC Album Produced by John Evans!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!'];
 
-            let audioResponse = showTop5AudioProjects(projects, 'Audio');
+            let audioResponse = showTop3Projects(projects, 'Audio');
             callSendAPI(sender_psid, audioResponse);
+        } else if (message.includes('outdoors') || message.includes('travel')) {
+            // Send a text blurb
+            const initialResponse = {
+                'text': 'Here are the top 3 projects in Audio!'
+            };
+            callSendAPI(sender_psid, initialResponse);
+
+            const projects = ['Audrey\'s Big Adventure', 'Kelsey & Joe\'s Wedding Registry!', 'David and Matt\'s Astrophotography Adventur' ];
+            let travelResponse = showTop3Projects(projects, 'Travel & Outdoors');
+            callSendAPI(sender_psid, travelResponse);
         } else if (message.includes('start typing')) {
             startTyping(sender_psid);
         } else if (message.includes('stop typing')) {
@@ -317,7 +327,7 @@ function getImageResponse(imageUrl) {
 
 const SHOW_DETAILS_AUDIO_PROJECT = 'New GABC Album Produced by John Evans!';
 
-function showTop5AudioProjects(projects, category) {
+function showTop3Projects(projects, category) {
     return {
         "attachment": {
             "type": "template",
@@ -325,7 +335,7 @@ function showTop5AudioProjects(projects, category) {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": `Top 3 Projects in Audio ${category}`,
+                        "title": `Top 3 Projects in ${category}`,
                         "subtitle": "Choose a project to see details!",
                         "buttons": [
                             {
