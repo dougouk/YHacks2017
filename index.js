@@ -30,8 +30,8 @@ const request = require('request'),
     app = express().use(bodyParser.json()); // creates express http server
     app.use(express.static(__dirname + '/public'));
 
-const picture_1 = '/kitty_1.jpeg';
-const picture_2 = '/kitty_2.jpeg';
+const picture_1 = '@/kitty_1.jpeg';
+const picture_2 = '@/kitty_2.jpeg';
 const picture_3 = 'https://static.pexels.com/photos/416160/pexels-photo-416160.jpeg';
 const picture_4 = 'https://static.pexels.com/photos/127028/pexels-photo-127028.jpeg';
 const picture_5 = 'https://static.pexels.com/photos/4602/jumping-cute-playing-animals.jpg';
@@ -164,10 +164,10 @@ function handlePostback(sender_psid, received_postback) {
     // Set the response based on the postback payload
     switch(payload) {
         case TIME_TO_100K:
-            response = getTop10Trending(picture_4, title, message);
+            response = getTop10Trending(picture_1, title, message);
             break;
         case TOTAL_FUNDED:
-            response = getTop10Trending(picture_5, title, message);
+            response = getTop10Trending(picture_2, title, message);
             break;
         case NUM_OF_PLEDGES:
             response = getTop10Trending(picture_3, title, message);
@@ -279,7 +279,7 @@ function getTop10Trending(graphImage, title, message) {
                     {
                         "title": title,
                         "subtitle": message,
-                        // 'image_url': graphImage,
+                        'image_url': graphImage,
                         "buttons": [
                             {
                                 "type": "postback",
