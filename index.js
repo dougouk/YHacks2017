@@ -138,7 +138,13 @@ function handleMessage(sender_psid, received_message) {
             const message = 'Click on a different factor for a different analysis!';
             response = getTop10Trending(picture_balance, title, message);
             callSendAPI(sender_psid, response);
-        } else if (message.includes('top projects in audio')) {
+        } else if (message.includes('audio')) {
+            // Send a text blurb
+            const initialResponse = {
+                'text': 'Here are the top 3 projects in Audio!'
+            };
+            callSendAPI(sender_psid, initialResponse);
+
             response = showTop5AudioProjects();
             callSendAPI(sender_psid, response);
         } else if (message.includes('start typing')) {
@@ -319,7 +325,7 @@ function showTop5AudioProjects() {
         'iVamos pa\' SXSW 2017!',
         'Faith-Based EP: 2nd album by Courtney Tarpley',
         'iVamos pa\' SXSW 2017!'
-    ]
+    ];
 
     return {
         "attachment": {
