@@ -271,6 +271,7 @@ const NUM_OF_PLEDGES = 'Number of Pledges';
 const TIME_TO_100K = '$100K Milestone';
 
 function getTop10Trending(graphImage, title, message) {
+    console.log('Image is ' + graphImage);
     return {
         "attachment": {
             "type": "template",
@@ -284,7 +285,7 @@ function getTop10Trending(graphImage, title, message) {
                         "buttons": [
                             {
                                 "type":"web_url",
-                                "url":picture_3,
+                                "url":graphImage,
                                 "title":"Enlarge photo",
                                 "webview_height_ratio": "full",
                                 "messenger_extensions": true,
