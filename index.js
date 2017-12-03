@@ -144,18 +144,29 @@ function handleMessage(sender_psid, received_message) {
                 'text': 'Here are the top 3 projects in Audio!'
             };
             callSendAPI(sender_psid, initialResponse);
-            const projects = ['New GABC Album Produced by John Evans!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!'];
+            const projects = [
+                {
+                    'title': 'New GABC Album Produced by John Evans!',
+                    'postback': AUDIO1
+                }, {
+                    'title': 'Faith-Based EP: 2nd album by Courtney Tarpley',
+                    'postback': AUDIO2
+                }, {
+                    'title': 'iVamos pa\' SXSW 2017!',
+                    'postback': AUDIO3
+                }
+            ];
 
             let audioResponse = showTop3Projects(projects, 'Audio');
             callSendAPI(sender_psid, audioResponse);
         } else if (message.includes('outdoors') || message.includes('travel')) {
             // Send a text blurb
             const initialResponse = {
-                'text': 'Here are the top 3 projects in Audio!'
+                'text': 'Here are the top 3 projects in Travel & Outdoors!'
             };
             callSendAPI(sender_psid, initialResponse);
 
-            const projects = ['Audrey\'s Big Adventure', 'Kelsey & Joe\'s Wedding Registry!', 'David and Matt\'s Astrophotography Adventur' ];
+            const projects = ['Audrey\'s Big Adventure', 'Kelsey & Joe\'s Wedding Registry!', 'David and Matt\'s Astrophotography Adventur'];
             let travelResponse = showTop3Projects(projects, 'Travel & Outdoors');
             callSendAPI(sender_psid, travelResponse);
         } else if (message.includes('start typing')) {
@@ -190,6 +201,12 @@ function handlePostback(sender_psid, received_postback) {
 
     const title = 'Here are the results based on ' + payload;
     const message = 'Click on different factors for a different analysis!';
+
+    const title1 = 'Title - New GABC Album Produced by John Evans!' + '\nAmount - 2515' + '\nDays funded in - 25' + '\nPercentage collected - 128%';
+    const title2 = 'Title - Faith-Based EP: 2nd album by Courtney Tarpley' + '\nAmount - 9040' + '\nDays funded in - 56' + '\nPercentage collected - 109%';
+    const title3 = 'Title - \'iVamos pa\' SXSW 2017!' + '\nAmount - 2620' + '\nDays funded in - 36' + '\nPercentage collected - 105%';
+
+    const message1 = 'Positive - High cash collected %, high balance' + '\nNegative - Although at the end it made it\'s goal the amount of time left was less';
     console.log(payload);
     // Set the response based on the postback payload
     switch (payload) {
@@ -202,8 +219,14 @@ function handlePostback(sender_psid, received_postback) {
         case NUM_OF_PLEDGES:
             response = getTop10Trending(picture_pledges_count, title, message);
             break;
-        case SHOW_DETAILS_AUDIO_PROJECT:
-            // TODO
+        case AUDIO1:
+            response = getAudioTitleMessage(title1, message1);
+            break;
+        case AUDIO2:
+            response = getAudioTitleMessage(title2, message1);
+            break;
+        case AUDIO3:
+            response = getAudioTitleMessage(title3, message1);
             break;
         case 'yes':
             response = {
@@ -340,16 +363,16 @@ function showTop3Projects(projects, category) {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": projects[0],
-                                "payload": TOTAL_FUNDED
+                                "title": projects[0].title,
+                                "payload": projects[0].postback
                             }, {
                                 "type": "postback",
-                                "title": projects[1],
-                                "payload": NUM_OF_PLEDGES
+                                "title": projects[1].title,
+                                "payload": projects[0].postback
                             }, {
                                 "type": "postback",
-                                "title": projects[2],
-                                "payload": PERCENTAGE
+                                "title": projects[2].title,
+                                "payload": projects[0].postback
                             }
                         ]
                     }
@@ -429,6 +452,28 @@ function getTop10Trending(graphImage, title, message) {
                                 "payload": PERCENTAGE
                             }
                         ]
+                    }
+                ]
+            }
+        }
+    }
+}
+
+const AUDIO1 = 'Audio1';
+const AUDIO2 = 'Audio2';
+const AUDIO3 = 'Audio3';
+
+function getAudioTitleMessage(title, message) {
+    return {
+        "attachment": {
+
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": title,
+                        "subtitle": message
                     }
                 ]
             }
