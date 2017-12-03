@@ -324,7 +324,8 @@ function showTop5AudioProjects() {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "template",
+                "template_type": "list",
+                "top_element_style": "compact",
                 "elements": [
                     {
                         "title": "New GABC Album Produced by John Evans!",
