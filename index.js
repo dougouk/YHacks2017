@@ -467,9 +467,9 @@ const AUDIO2 = 'Audio2';
 const AUDIO3 = 'Audio3';
 
 function getAudioTitleMessage(title, message) {
-    const initialResponse = {"text": `*${title}*` };
-    callSendAPI(sender_psid, initialResponse);
+    const titleResponse = {"text": `*${title}*` };
+    callSendAPI(sender_psid, titleResponse);
 
-   const initialResponse = {"text": message };
-    callSendAPI(sender_psid, initialResponse);
+   const descriptionResponse = {"text": message };
+    callSendAPI(sender_psid, descriptionResponse);
 }
