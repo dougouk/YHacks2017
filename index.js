@@ -123,7 +123,7 @@ function handleMessage(sender_psid, received_message) {
     if (message) {
         // Create the payload for a basic text message, which
         // will be added to the body of our request to the Send API
-        if (message.includes('catergory analysis')) {
+        if (message.includes('category analysis')) {
             // Send a text blurb
             const initialResponse = {
                 'text': 'Here is the analysis of categories!'
