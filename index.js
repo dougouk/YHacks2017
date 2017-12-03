@@ -144,8 +144,9 @@ function handleMessage(sender_psid, received_message) {
                 'text': 'Here are the top 3 projects in Audio!'
             };
             callSendAPI(sender_psid, initialResponse);
+            const projects = ['New GABC Album Produced by John Evans!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!'];
 
-            let audioResponse = showTop5AudioProjects();
+            let audioResponse = showTop5AudioProjects(projects, 'Audio');
             callSendAPI(sender_psid, audioResponse);
         } else if (message.includes('start typing')) {
             startTyping(sender_psid);
@@ -316,8 +317,7 @@ function getImageResponse(imageUrl) {
 
 const SHOW_DETAILS_AUDIO_PROJECT = 'New GABC Album Produced by John Evans!';
 
-function showTop5AudioProjects() {
-    const projects = ['New GABC Album Produced by John Evans!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!'];
+function showTop5AudioProjects(projects, category) {
     return {
         "attachment": {
             "type": "template",
@@ -325,20 +325,20 @@ function showTop5AudioProjects() {
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Top 3 Projects in Audio",
+                        "title": `Top 3 Projects in Audio ${category}`,
                         "subtitle": "Choose a project to see details!",
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "New GABC Album Produced by John Evans!",
+                                "title": projects[0],
                                 "payload": TOTAL_FUNDED
                             }, {
                                 "type": "postback",
-                                "title": "Faith-Based EP: 2nd album by Courtney Tarpley",
+                                "title": projects[1],
                                 "payload": NUM_OF_PLEDGES
                             }, {
                                 "type": "postback",
-                                "title": "iVamos pa\' SXSW 2017!",
+                                "title": projects[2],
                                 "payload": PERCENTAGE
                             }
                         ]
