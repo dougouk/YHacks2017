@@ -284,7 +284,7 @@ function getTop10Trending(graphImage, title, message) {
                         "buttons": [
                             {
                                 "type":"web_url",
-                                "url":graphImage,
+                                "url":picture_3,
                                 "title":"Enlarge photo",
                                 "webview_height_ratio": "full",
                                 "messenger_extensions": true,
