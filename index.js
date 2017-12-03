@@ -329,25 +329,33 @@ function showTop5AudioProjects() {
                     {
                         "title": "New GABC Album Produced by John Evans!",
                         "subtitle": "See all our colors",
+                        "buttons": [
+                            {
+                                "title": "View",
+                                "type": "postback",
+                                "postback": "a1"
+                            }
+                        ]
                     }, {
                         "title": "Faith-Based EP: 2nd album by Courtney Tarpley",
                         "subtitle": "See all our colors",
-                        // "buttons": [
-                        //     {
-                        //         "title": "View",
-                        //         "type": "postback",
-                        //         "postback": SHOW_DETAILS_AUDIO_PROJECT
-                        //     }
-                        // ]
+                        "buttons": [
+                            {
+                                "title": "View",
+                                "type": "postback",
+                                "postback": "a2"
+                            }
+                        ]
                     }, {
                         "title": "iVamos pa\' SXSW 2017!",
-                        // "buttons": [
-                        //     {
-                        //         "title": "View",
-                        //         "type": "postback",
-                        //         "postback": SHOW_DETAILS_AUDIO_PROJECT
-                        //     }
-                        // ]
+                        "subtitle": "100% Cotton, 200% Comfortable",
+                        "buttons": [
+                            {
+                                "title": "View",
+                                "type": "postback",
+                                "postback": "a3"
+                            }
+                        ]
                     }
                 ]
 
