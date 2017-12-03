@@ -173,14 +173,13 @@ function handleMessage(sender_psid, received_message) {
 }
 
 function handlePostback(sender_psid, received_postback) {
-    console.log('ok')
     let response;
     // Get the payload for the postback
     let payload = received_postback.payload;
 
     const title = 'Here are the results based on ' + payload;
     const message = 'Click on different factors for a different analysis!';
-
+    console.log(payload);
     // Set the response based on the postback payload
     switch (payload) {
         case PERCENTAGE:
@@ -330,13 +329,10 @@ function showTop5AudioProjects() {
                     {
                         "title": "New GABC Album Produced by John Evans!",
                         "subtitle": "See all our colors",
-                        "buttons": [
-                            {
-                                "title": "View",
-                                "type": "postback",
-                                "postback": SHOW_DETAILS_AUDIO_PROJECT
-                            }
-                        ]
+                        "default_action": {
+                            "type": "postback",
+                            "postback": SHOW_DETAILS_AUDIO_PROJECT,
+                        }
                     }, {
                         "title": "Faith-Based EP: 2nd album by Courtney Tarpley",
                         "subtitle": "See all our colors",
