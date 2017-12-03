@@ -43,7 +43,6 @@ app.use(bodyParser.json());
 // Sets server port and logs message on success
 app.listen(process.env.PORT || app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
-    callSendAPI_setup(getWhiteListedDomains());
 });
 
 // Accepts POST requests at /webhook endpoint
@@ -109,7 +108,7 @@ app.get('/webhook', (req, res) => {
             // Respond with 200 OK and challenge token from the request
             console.log('WEBHOOK_VERIFIED');
             res.status(200).send(challenge);
-
+            callSendAPI_setup(getWhiteListedDomains());
         } else {
             // Responds with '403 Forbidden' if verify tokens do not match
             res.sendStatus(403);
@@ -286,7 +285,7 @@ function sendTypingAPI(requestBody) {
 
 function getWhiteListedDomains() {
     return {
-        'whitelisted_domains': [picture_3, picture_4, picture_5, 'https://peterssendreceiveapp.ngrok.io']
+        'whitelisted_domains': ['https://peterssendreceiveapp.ngrok.io']
     }
 }
 
