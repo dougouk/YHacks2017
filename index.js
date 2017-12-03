@@ -341,7 +341,6 @@ function showTop5AudioProjects() {
                         // ]
                     }, {
                         "title": "iVamos pa\' SXSW 2017!",
-                        "subtitle": "100% Cotton, 200% Comfortable",
                         // "buttons": [
                         //     {
                         //         "title": "View",
