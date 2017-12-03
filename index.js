@@ -31,11 +31,10 @@ const request = require('request'),
 
 app.use(express.static(__dirname + '/public'));
 
-const picture_1 = '/kitty_1.jpeg';
-const picture_2 = '/kitty_2.jpeg';
-const picture_3 = 'https://static.pexels.com/photos/416160/pexels-photo-416160.jpeg';
-const picture_4 = 'https://static.pexels.com/photos/127028/pexels-photo-127028.jpeg';
-const picture_5 = 'https://static.pexels.com/photos/4602/jumping-cute-playing-animals.jpg';
+const picture_balance = 'https://image.ibb.co/m9xkeb/balance.png';
+const picture_pledges_count = 'https://image.ibb.co/m9xkeb/balance.png';
+const picture_percentage = 'https://image.ibb.co/hfVkCw/nearest_percentage.png';
+const picture_heat_map = 'https://image.ibb.co/citGKb/correlation.png';
 
 app.set('port', process.env.PORT || 5000);
 app.use(bodyParser.json());
@@ -137,7 +136,7 @@ function handleMessage(sender_psid, received_message) {
 
             const title = 'Top 10 Categories';
             const message = 'Click on a different factor for a different analysis!';
-            response = getTop10Trending(picture_3, title, message);
+            response = getTop10Trending(picture_balance, title, message);
             callSendAPI(sender_psid, response);
         } else if (message.includes('top projects in audio')) {
             response = showTop5AudioProjects();
@@ -178,14 +177,17 @@ function handlePostback(sender_psid, received_postback) {
 
     // Set the response based on the postback payload
     switch (payload) {
-        case TIME_TO_100K:
-            response = getTop10Trending(picture_1, title, message);
+        case PERCENTAGE:
+            response = getTop10Trending(picture_percentage, title, message);
             break;
         case TOTAL_FUNDED:
-            response = getTop10Trending(picture_2, title, message);
+            response = getTop10Trending(picture_balance, title, message);
             break;
         case NUM_OF_PLEDGES:
-            response = getTop10Trending(picture_3, title, message);
+            response = getTop10Trending(picture_pledges_count, title, message);
+            break;
+        case SHOW_DETAILS_AUDIO_PROJECT:
+            // TODO
             break;
         case 'yes':
             response = {
@@ -429,7 +431,7 @@ function showDetails() {
 
 const TOTAL_FUNDED = 'Total Funded';
 const NUM_OF_PLEDGES = 'Number of Pledges';
-const TIME_TO_100K = '$100K Milestone';
+const PERCENTAGE = '% Funded';
 
 function getTop10Trending(graphImage, title, message) {
     console.log('Image is ' + graphImage);
@@ -455,7 +457,7 @@ function getTop10Trending(graphImage, title, message) {
                             }, {
                                 "type": "postback",
                                 "title": "$100k Milestone",
-                                "payload": TIME_TO_100K
+                                "payload": PERCENTAGE
                             }
                         ]
                     }
