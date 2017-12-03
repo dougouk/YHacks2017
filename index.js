@@ -145,6 +145,12 @@ function handleMessage(sender_psid, received_message) {
         } else if (message.includes('stop typing')) {
             stopTyping(sender_psid);
         } else if (message.includes('details')) {
+            // Send a text blurb
+            const initialResponse = {
+                'text': 'Showing details'
+            };
+            callSendAPI(sender_psid, initialResponse);
+
             response = showDetails();
             callSendAPI(sender_psid, response);
         } else {
@@ -280,7 +286,7 @@ function sendTypingAPI(requestBody) {
 
 function getWhiteListedDomains() {
     return {
-        'whitelisted_domains': [picture_3, picture_4, picture_5]
+        'whitelisted_domains': [picture_3, picture_4, picture_5, 'https://peterssendreceiveapp.ngrok.io']
     }
 }
 
