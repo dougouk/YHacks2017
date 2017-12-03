@@ -220,15 +220,15 @@ function handlePostback(sender_psid, received_postback) {
             response = getTop10Trending(picture_pledges_count, title, message);
             break;
         case AUDIO1:
-            getAudioTitleMessage(title1, message1);
+            getAudioTitleMessage(sender_psid, title1, message1);
             return;
             break;
         case AUDIO2:
-            getAudioTitleMessage(title2, message1);
+            getAudioTitleMessage(sender_psid, title2, message1);
             return;
             break;
         case AUDIO3:
-            getAudioTitleMessage(title3, message1);
+            getAudioTitleMessage(sender_psid, title3, message1);
             return;
             break;
         case 'yes':
@@ -466,7 +466,7 @@ const AUDIO1 = 'Audio1';
 const AUDIO2 = 'Audio2';
 const AUDIO3 = 'Audio3';
 
-function getAudioTitleMessage(title, message) {
+function getAudioTitleMessage(sender_psid, title, message) {
     const titleResponse = {"text": `*${title}*` };
     callSendAPI(sender_psid, titleResponse);
 
