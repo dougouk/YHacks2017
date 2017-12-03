@@ -43,7 +43,7 @@ app.use(bodyParser.json());
 // Sets server port and logs message on success
 app.listen(process.env.PORT || app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
-    callSendAPI(getWhiteListedDomains());
+    callSendAPI_setup(getWhiteListedDomains());
 });
 
 // Accepts POST requests at /webhook endpoint
@@ -127,7 +127,9 @@ function handleMessage(sender_psid, received_message) {
         // will be added to the body of our request to the Send API
         if (message.includes('top 10 trends')) {
             // Send a text blurb
-            const initialResponse = {'text': 'Here are the top 10 trending projects!' };
+            const initialResponse = {
+                'text': 'Here are the top 10 trending projects!'
+            };
             callSendAPI(sender_psid, initialResponse);
 
             // send image right below
@@ -142,6 +144,9 @@ function handleMessage(sender_psid, received_message) {
             startTyping(sender_psid);
         } else if (message.includes('stop typing')) {
             stopTyping(sender_psid);
+        } else if (message.includes('details')) {
+            response = showDetails();
+            callSendAPI(sender_psid, response);
         } else {
             response = {
                 "text": `You sent the message: "${received_message.text}".`
@@ -161,10 +166,10 @@ function handlePostback(sender_psid, received_postback) {
     let payload = received_postback.payload;
 
     const title = 'Here are the results based on ' + payload;
-    const message = 'Click on a different factors for a different analysis!';
+    const message = 'Click on different factors for a different analysis!';
 
     // Set the response based on the postback payload
-    switch(payload) {
+    switch (payload) {
         case TIME_TO_100K:
             response = getTop10Trending(picture_1, title, message);
             break;
@@ -175,10 +180,14 @@ function handlePostback(sender_psid, received_postback) {
             response = getTop10Trending(picture_3, title, message);
             break;
         case 'yes':
-            response = { 'text': 'Thanks!' }
+            response = {
+                'text': 'Thanks!'
+            }
             break;
         case 'no':
-            response = { 'text': 'Opps.' }
+            response = {
+                'text': 'Opps.'
+            }
             break;
     }
 
@@ -203,6 +212,24 @@ function callSendAPI(sender_psid, response) {
         },
         "method": "POST",
         "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('message sent!')
+        } else {
+            console.error("Unable to send message:" + err);
+        }
+    });
+}
+
+function callSendAPI_setup(sender_psid, response) {
+    // Send the HTTP request to the Messenger Platform
+    request({
+        "uri": "https://graph.facebook.com/v2.6/me/messages",
+        "qs": {
+            "access_token": PAGE_ACCESS_TOKEN
+        },
+        "method": "POST",
+        "json": response
     }, (err, res, body) => {
         if (!err) {
             console.log('message sent!')
@@ -253,11 +280,7 @@ function sendTypingAPI(requestBody) {
 
 function getWhiteListedDomains() {
     return {
-        'whitelisted_domains': [
-            picture_3,
-            picture_4,
-            picture_5
-        ]
+        'whitelisted_domains': [picture_3, picture_4, picture_5]
     }
 }
 
@@ -272,6 +295,72 @@ function getImageResponse(imageUrl) {
             "payload": {
                 "url": imageUrl,
                 'is_reusable': true
+            }
+        }
+    }
+}
+
+function showDetails() {
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "list",
+                "top_element_style": "compact",
+                "elements": [
+                    {
+                        "title": "Classic T-Shirt Collection",
+                        "subtitle": "See all our colors",
+                        "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",
+                        "buttons": [
+                            {
+                                "title": "View",
+                                "type": "web_url",
+                                "url": "https://peterssendreceiveapp.ngrok.io/collection",
+                                "messenger_extensions": true,
+                                "webview_height_ratio": "tall",
+                                "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                            }
+                        ]
+                    }, {
+                        "title": "Classic White T-Shirt",
+                        "subtitle": "See all our colors",
+                        "default_action": {
+                            "type": "web_url",
+                            "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
+                            "messenger_extensions": false,
+                            "webview_height_ratio": "tall"
+                        }
+                    }, {
+                        "title": "Classic Blue T-Shirt",
+                        "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
+                        "subtitle": "100% Cotton, 200% Comfortable",
+                        "default_action": {
+                            "type": "web_url",
+                            "url": "https://peterssendreceiveapp.ngrok.io/view?item=101",
+                            "messenger_extensions": true,
+                            "webview_height_ratio": "tall",
+                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                        },
+                        "buttons": [
+                            {
+                                "title": "Shop Now",
+                                "type": "web_url",
+                                "url": "https://peterssendreceiveapp.ngrok.io/shop?item=101",
+                                "messenger_extensions": true,
+                                "webview_height_ratio": "tall",
+                                "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                            }
+                        ]
+                    }
+                ],
+                "buttons": [
+                    {
+                        "title": "View More",
+                        "type": "postback",
+                        "payload": "payload"
+                    }
+                ]
             }
         }
     }
@@ -295,24 +384,21 @@ function getTop10Trending(graphImage, title, message) {
                         'image_url': graphImage,
                         "buttons": [
                             {
-                                "type":"web_url",
-                                "url":'https://petersfancyapparel.com/fallback',
-                                "title":"Enlarge photo",
+                                "type": "web_url",
+                                "url": 'https://petersfancyapparel.com/fallback',
+                                "title": "Enlarge photo",
                                 "webview_height_ratio": "full",
                                 "messenger_extensions": true,
                                 "fallback_url": "https://petersfancyapparel.com/fallback"
-                            },
-                            {
+                            }, {
                                 "type": "postback",
                                 "title": "Total funded",
                                 "payload": TOTAL_FUNDED
-                            },
-                            {
+                            }, {
                                 "type": "postback",
                                 "title": "Number of pledges",
                                 "payload": NUM_OF_PLEDGES
-                            },
-                            {
+                            }, {
                                 "type": "postback",
                                 "title": "$100k Milestone",
                                 "payload": TIME_TO_100K
