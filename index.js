@@ -166,7 +166,19 @@ function handleMessage(sender_psid, received_message) {
             };
             callSendAPI(sender_psid, initialResponse);
 
-            const projects = ['Audrey\'s Big Adventure', 'Kelsey & Joe\'s Wedding Registry!', 'David and Matt\'s Astrophotography Adventur'];
+            const projects = [
+                {
+                    'title': 'Audrey\'s Big Adventure',
+                    'postback': TRAVEL1
+                }, {
+                    'title': 'Kelsey & Joe\'s Wedding Registry!',
+                    'postback': TRAVEL2
+                }, {
+                    'title': 'David and Matt\'s Astrophotography Adventur',
+                    'postback': TRAVEL3
+                }
+            ];
+
             let travelResponse = showTop3Projects(projects, 'Travel & Outdoors');
             callSendAPI(sender_psid, travelResponse);
         } else if (message.includes('start typing')) {
@@ -202,9 +214,9 @@ function handlePostback(sender_psid, received_postback) {
     const title = 'Here are the results based on ' + payload;
     const message = 'Click on different factors for a different analysis!';
 
-    const title1 = 'Title - New GABC Album Produced by John Evans!' + '\nAmount - 2515' + '\nDays funded in - 25' + '\nPercentage collected - 128%';
-    const title2 = 'Title - Faith-Based EP: 2nd album by Courtney Tarpley' + '\nAmount - 9040' + '\nDays funded in - 56' + '\nPercentage collected - 109%';
-    const title3 = 'Title - \'iVamos pa\' SXSW 2017!' + '\nAmount - 2620' + '\nDays funded in - 36' + '\nPercentage collected - 105%';
+    const title1 = 'Title - New GABC Album Produced by John Evans!' + '\nAmount - $2515' + '\nDays funded in - 25' + '\nPercentage collected - 128%';
+    const title2 = 'Title - Faith-Based EP: 2nd album by Courtney Tarpley' + '\nAmount - $9040' + '\nDays funded in - 56' + '\nPercentage collected - 109%';
+    const title3 = 'Title - \'iVamos pa\' SXSW 2017!' + '\nAmount - $2620' + '\nDays funded in - 36' + '\nPercentage collected - 105%';
 
     const message1 = 'Positive - High cash collected %, high balance' + '\nNegative - Although at the end it made it\'s goal the amount of time left was less';
     console.log(payload);
@@ -220,17 +232,27 @@ function handlePostback(sender_psid, received_postback) {
             response = getTop10Trending(picture_pledges_count, title, message);
             break;
         case AUDIO1:
-            getAudioTitleMessage(sender_psid, title1, message1);
+            sendDetails(sender_psid, title1, message1);
             return;
             break;
         case AUDIO2:
-            getAudioTitleMessage(sender_psid, title2, message1);
+            sendDetails(sender_psid, title2, message1);
             return;
             break;
         case AUDIO3:
-            getAudioTitleMessage(sender_psid, title3, message1);
+            sendDetails(sender_psid, title3, message1);
             return;
             break;
+        case TRAVEL1:
+            sendDetails(title4, message1);
+            break;
+        case TRAVEL2:
+            sendDetails(title5, message1);
+            return;
+            break;
+        case TRAVEL3:
+            sendDetails(title6, message1);
+            return;
         case 'yes':
             response = {
                 'text': 'Thanks!'
@@ -465,11 +487,18 @@ function getTop10Trending(graphImage, title, message) {
 const AUDIO1 = 'Audio1';
 const AUDIO2 = 'Audio2';
 const AUDIO3 = 'Audio3';
+const TRAVEL1 = "Travel1";
+const TRAVEL2 = "Travel2";
+const TRAVEL3 = "Travel3";
 
-function getAudioTitleMessage(sender_psid, title, message) {
-    const titleResponse = {"text": `*${title}*` };
+function sendDetails(sender_psid, title, message) {
+    const titleResponse = {
+        "text": title
+    };
     callSendAPI(sender_psid, titleResponse);
 
-   const descriptionResponse = {"text": message };
+    const descriptionResponse = {
+        "text": message
+    };
     callSendAPI(sender_psid, descriptionResponse);
 }
