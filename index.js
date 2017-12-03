@@ -136,6 +136,10 @@ function handleMessage(sender_psid, received_message) {
             const message = 'Click on a different factors for a different analysis!';
             response = getTop10Trending(picture_3, title, message);
             callSendAPI(sender_psid, response);
+        } else if (message.includes('start typing')) {
+            startTyping(sender_psid);
+        } else if (message.includes('stop typing')) {
+            stopTyping(sender_psid);
         } else {
             response = {
                 "text": `You sent the message: "${received_message.text}".`
@@ -197,6 +201,43 @@ function callSendAPI(sender_psid, response) {
         },
         "method": "POST",
         "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('message sent!')
+        } else {
+            console.error("Unable to send message:" + err);
+        }
+    });
+}
+
+function startTyping(senderPSID) {
+    let requestBody = {
+        'recipient': {
+            'id': senderPSID
+        },
+        'sender_action': 'typing_on'
+    }
+    sendTypingAPI(requestBody);
+}
+
+function stopTyping(senderPSID) {
+    let requestBody = {
+        'recipient': {
+            'id': senderPSID
+        },
+        'sender_action': 'typing_off'
+    }
+    sendTypingAPI(requestBody);
+}
+
+function sendTypingAPI(requestBody) {
+    request({
+        "uri": "https://graph.facebook.com/v2.6/me/messages",
+        "qs": {
+            "access_token": PAGE_ACCESS_TOKEN
+        },
+        "method": "POST",
+        "json": requestBody
     }, (err, res, body) => {
         if (!err) {
             console.log('message sent!')
