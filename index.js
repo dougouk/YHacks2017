@@ -219,6 +219,12 @@ function handlePostback(sender_psid, received_postback) {
     const title3 = 'Title - \'iVamos pa\' SXSW 2017!' + '\nAmount - $2620' + '\nDays funded in - 36' + '\nPercentage collected - 105%';
 
     const message1 = 'Positive - High cash collected %, high balance' + '\nNegative - Although at the end it made it\'s goal the amount of time left was less';
+
+    const title4 = "Title - Audrey\"s Big Adventure" + "\nAmount - 2045" + "\nPercentage collected - 78%";
+    const title5 = "Title - Kelsey & Joe\"s Wedding Registry!" + "\nAmount - 6589" + "\nPercentage collected - 92%";
+    const title6 = "Title - David and Matt\"s Astrophotography Adventure" + "\nAmount - 2400" + "\nPercentage collected - 88%";
+
+    const message2 = "Nearest 5% high, partial forever funding" + "\nAmount of time left is less";
     console.log(payload);
     // Set the response based on the postback payload
     switch (payload) {
@@ -234,24 +240,20 @@ function handlePostback(sender_psid, received_postback) {
         case AUDIO1:
             sendDetails(sender_psid, title1, message1);
             return;
-            break;
         case AUDIO2:
             sendDetails(sender_psid, title2, message1);
             return;
-            break;
         case AUDIO3:
             sendDetails(sender_psid, title3, message1);
             return;
-            break;
         case TRAVEL1:
-            sendDetails(title4, message1);
-            break;
-        case TRAVEL2:
-            sendDetails(title5, message1);
+            sendDetails(title4, message2);
             return;
-            break;
+        case TRAVEL2:
+            sendDetails(title5, message2);
+            return;
         case TRAVEL3:
-            sendDetails(title6, message1);
+            sendDetails(title6, message2);
             return;
         case 'yes':
             response = {
