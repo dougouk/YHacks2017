@@ -214,17 +214,16 @@ function handlePostback(sender_psid, received_postback) {
     const title = 'Here are the results based on ' + payload;
     const message = 'Click on different factors for a different analysis!';
 
-    const title1 = 'Title - New GABC Album Produced by John Evans!' + '\nAmount - $2515' + '\nDays funded in - 25' + '\nPercentage collected - 128%';
-    const title2 = 'Title - Faith-Based EP: 2nd album by Courtney Tarpley' + '\nAmount - $9040' + '\nDays funded in - 56' + '\nPercentage collected - 109%';
-    const title3 = 'Title - \'iVamos pa\' SXSW 2017!' + '\nAmount - $2620' + '\nDays funded in - 36' + '\nPercentage collected - 105%';
+    const title1 = 'Product - New GABC Album Produced by John Evans!' + '\nFunding raised - $2515.00' + '\nDays funded in - 25' + '\nPercentage collected - 128%';
+    const title2 = 'Product - Faith-Based EP: 2nd album by Courtney Tarpley' + '\nFunding raised - $9040.00' + '\nDays funded in - 56' + '\nPercentage collected - 109%';
+    const title3 = 'Product - \'iVamos pa\' SXSW 2017!' + '\nFunding raised - $2620.00' + '\nDays funded in - 36' + '\nPercentage collected - 105%';
 
-    const message1 = 'Positive - High cash collected %, high balance' + '\nNegative - Although at the end it made it\'s goal the amount of time left was less';
+    const title4 = 'Product - Audrey\'s Big Adventure' + '\nFunding raised - $2045.00' + '\nPercentage collected - 78%';
+    const title5 = 'Product - Kelsey & Joe\'s Wedding Registry!' + '\nFunding raised - $6589.00' + '\nPercentage collected - 92%';
+    const title6 = 'Product - David and Matt\'s Astrophotography Adventure' + '\nFunding raised - $2400.00' + '\nPercentage collected - 88%';
 
-    const title4 = "Title - Audrey\"s Big Adventure" + "\nAmount - 2045" + "\nPercentage collected - 78%";
-    const title5 = "Title - Kelsey & Joe\"s Wedding Registry!" + "\nAmount - 6589" + "\nPercentage collected - 92%";
-    const title6 = "Title - David and Matt\"s Astrophotography Adventure" + "\nAmount - 2400" + "\nPercentage collected - 88%";
-
-    const message2 = "Postive - Nearest 5% high, partial forever funding" + "\nNegative - Amount of time left is less";
+    const message2 = 'Why successful?\nHigh cash collected %, partial forever funding' + '\nWhy unsuccessful?\nLow 100% conversion rate';
+    const message1 = 'Why successful?\nHigh cash collected %, high balance' + '\nWhy unsuccessful?\nLast minute conversions';
     console.log(payload);
     // Set the response based on the postback payload
     switch (payload) {
