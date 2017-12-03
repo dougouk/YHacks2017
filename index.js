@@ -224,7 +224,7 @@ function handlePostback(sender_psid, received_postback) {
     const title5 = "Title - Kelsey & Joe\"s Wedding Registry!" + "\nAmount - 6589" + "\nPercentage collected - 92%";
     const title6 = "Title - David and Matt\"s Astrophotography Adventure" + "\nAmount - 2400" + "\nPercentage collected - 88%";
 
-    const message2 = "Nearest 5% high, partial forever funding" + "\nAmount of time left is less";
+    const message2 = "Postive - Nearest 5% high, partial forever funding" + "\nNegative - Amount of time left is less";
     console.log(payload);
     // Set the response based on the postback payload
     switch (payload) {
