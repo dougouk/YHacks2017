@@ -295,12 +295,12 @@ function getTop10Trending(graphImage, title, message) {
                                 "payload": TIME_TO_100K
                             }
                         ],
-                        'default_action': {
-                            'type': 'web url',
-                            'url': graphImage,
-                            'messenger_extensions': 'false',
-                            'webview_height_ratio': 'FULL'
-                        }
+                        // 'default_action': {
+                        //     'type': 'web url',
+                        //     'url': graphImage,
+                        //     'messenger_extensions': 'false',
+                        //     'webview_height_ratio': 'FULL'
+                        // }
                     }
                 ]
             }
