@@ -285,7 +285,7 @@ function getTop10Trending(graphImage, title, message) {
                         "buttons": [
                             {
                                 "type":"web_url",
-                                "url":graphImage,
+                                "url":'https://petersfancyapparel.com/fallback',
                                 "title":"Enlarge photo",
                                 "webview_height_ratio": "full",
                                 "messenger_extensions": true,
