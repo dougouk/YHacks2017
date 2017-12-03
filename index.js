@@ -139,6 +139,9 @@ function handleMessage(sender_psid, received_message) {
             const message = 'Click on a different factor for a different analysis!';
             response = getTop10Trending(picture_3, title, message);
             callSendAPI(sender_psid, response);
+        } else if (message.includes('top projects in audio')) {
+            response = showTop5AudioProjects();
+            callSendAPI(sender_psid, response);
         } else if (message.includes('start typing')) {
             startTyping(sender_psid);
         } else if (message.includes('stop typing')) {
@@ -305,6 +308,62 @@ function getImageResponse(imageUrl) {
     }
 }
 
+const SHOW_DETAILS_AUDIO_PROJECT = 'New GABC Album Produced by John Evans!';
+
+function showTop5AudioProjects() {
+    const projects = [
+        'New GABC Album Produced by John Evans!',
+        'Faith-Based EP: 2nd album by Courtney Tarpley',
+        'iVamos pa\' SXSW 2017!',
+        'Faith-Based EP: 2nd album by Courtney Tarpley',
+        'iVamos pa\' SXSW 2017!'
+    ]
+
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "list",
+                "top_element_style": "compact",
+                "elements": [
+                    {
+                        "title": projects[0],
+                        "subtitle": "See all our colors",
+                        "buttons": [
+                            {
+                                "title": "View",
+                                "type": "postback",
+                                'postback': SHOW_DETAILS_AUDIO_PROJECT
+                            }
+                        ]
+                    }, {
+                        "title": projects[1],
+                        "subtitle": "See all our colors",
+                        "buttons": [
+                            {
+                                "title": "View",
+                                "type": "postback",
+                                'postback': SHOW_DETAILS_AUDIO_PROJECT
+                            }
+                        ]
+                    }, {
+                        "title": projects[2],
+                        "subtitle": "100% Cotton, 200% Comfortable",
+                        "buttons": [
+                            {
+                                "title": "View",
+                                "type": "postback",
+                                'postback': SHOW_DETAILS_AUDIO_PROJECT
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+
+
 function showDetails() {
     return {
         "attachment": {
@@ -320,11 +379,8 @@ function showDetails() {
                         "buttons": [
                             {
                                 "title": "View",
-                                "type": "web_url",
-                                "url": "https://peterssendreceiveapp.ngrok.io/collection",
-                                "messenger_extensions": true,
-                                "webview_height_ratio": "tall",
-                                "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                                "type": "postback",
+                                'payload': ''
                             }
                         ]
                     }, {
@@ -387,7 +443,6 @@ function getTop10Trending(graphImage, title, message) {
                         "title": title,
                         "subtitle": message,
                         'image_url': graphImage,
-                        'url': graphImage,
                         "buttons": [
                             {
                                 "type": "postback",
