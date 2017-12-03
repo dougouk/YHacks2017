@@ -28,10 +28,11 @@ const request = require('request'),
     express = require('express'),
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json()); // creates express http server
-    app.use(express.static(__dirname + '/public'));
 
-const picture_1 = '@/kitty_1.jpeg';
-const picture_2 = '@/kitty_2.jpeg';
+app.use(express.static(__dirname + '/public'));
+
+const picture_1 = '/kitty_1.jpeg';
+const picture_2 = '/kitty_2.jpeg';
 const picture_3 = 'https://static.pexels.com/photos/416160/pexels-photo-416160.jpeg';
 const picture_4 = 'https://static.pexels.com/photos/127028/pexels-photo-127028.jpeg';
 const picture_5 = 'https://static.pexels.com/photos/4602/jumping-cute-playing-animals.jpg';
@@ -129,8 +130,8 @@ function handleMessage(sender_psid, received_message) {
             callSendAPI(sender_psid, initialResponse);
 
             // send image right below
-            const imageResponse = getImageResponse(picture_3);
-            callSendAPI(sender_psid, imageResponse);
+            // const imageResponse = getImageResponse(picture_3);
+            // callSendAPI(sender_psid, imageResponse);
 
             const title = 'Top 10 Categories';
             const message = 'Click on a different factors for a different analysis!';
@@ -282,25 +283,29 @@ function getTop10Trending(graphImage, title, message) {
                         'image_url': graphImage,
                         "buttons": [
                             {
+                                "type":"web_url",
+                                "url":graphImage,
+                                "title":"Enlarge photo",
+                                "webview_height_ratio": "full",
+                                "messenger_extensions": true,
+                                "fallback_url": "https://petersfancyapparel.com/fallback"
+                            },
+                            {
                                 "type": "postback",
                                 "title": "Total funded",
                                 "payload": TOTAL_FUNDED
-                            }, {
+                            },
+                            {
                                 "type": "postback",
                                 "title": "Number of pledges",
                                 "payload": NUM_OF_PLEDGES
-                            }, {
+                            },
+                            {
                                 "type": "postback",
                                 "title": "$100k Milestone",
                                 "payload": TIME_TO_100K
                             }
-                        ],
-                        // 'default_action': {
-                        //     'type': 'web url',
-                        //     'url': graphImage,
-                        //     'messenger_extensions': 'false',
-                        //     'webview_height_ratio': 'FULL'
-                        // }
+                        ]
                     }
                 ]
             }
