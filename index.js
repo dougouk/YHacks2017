@@ -32,7 +32,7 @@ const request = require('request'),
 app.use(express.static(__dirname + '/public'));
 
 const picture_balance = 'https://image.ibb.co/m9xkeb/balance.png';
-const picture_pledges_count = 'https://image.ibb.co/m9xkeb/balance.png';
+const picture_pledges_count = 'https://image.ibb.co/kNBBKb/pledges_count.png';
 const picture_percentage = 'https://image.ibb.co/hfVkCw/nearest_percentage.png';
 const picture_heat_map = 'https://image.ibb.co/citGKb/correlation.png';
 
@@ -440,7 +440,7 @@ function getTop10Trending(graphImage, title, message) {
                                 "payload": NUM_OF_PLEDGES
                             }, {
                                 "type": "postback",
-                                "title": "$100k Milestone",
+                                "title": "% Funded",
                                 "payload": PERCENTAGE
                             }
                         ]
