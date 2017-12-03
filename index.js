@@ -213,6 +213,7 @@ function handlePostback(sender_psid, received_postback) {
 
 function callSendAPI(sender_psid, response) {
     // Construct the message body
+    console.log(response);
     let request_body = {
         "recipient": {
             "id": sender_psid
@@ -295,9 +296,7 @@ function sendTypingAPI(requestBody) {
 }
 
 function getWhiteListedDomains() {
-    return {
-        'whitelisted_domains': ['https://peterssendreceiveapp.ngrok.io']
-    }
+    return {'whitelisted_domains': ['https://peterssendreceiveapp.ngrok.io']}
 }
 
 /*
@@ -319,13 +318,7 @@ function getImageResponse(imageUrl) {
 const SHOW_DETAILS_AUDIO_PROJECT = 'New GABC Album Produced by John Evans!';
 
 function showTop5AudioProjects() {
-    const projects = [
-        'New GABC Album Produced by John Evans!',
-        'Faith-Based EP: 2nd album by Courtney Tarpley',
-        'iVamos pa\' SXSW 2017!',
-        'Faith-Based EP: 2nd album by Courtney Tarpley',
-        'iVamos pa\' SXSW 2017!'
-    ];
+    const projects = ['New GABC Album Produced by John Evans!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!', 'Faith-Based EP: 2nd album by Courtney Tarpley', 'iVamos pa\' SXSW 2017!'];
 
     return {
         "attachment": {
@@ -364,12 +357,19 @@ function showTop5AudioProjects() {
                             }
                         ]
                     }
+                ],
+                "buttons": [
+                    {
+                        "title": "View More",
+                        "type": "postback",
+                        "payload": "payload"
+                    }
                 ]
+
             }
         }
     }
 }
-
 
 function showDetails() {
     return {
@@ -391,11 +391,11 @@ function showDetails() {
                         ]
                     }, {
                         "title": "Classic White T-Shirt",
-                        "subtitle": "See all our colors",
+                        "subtitle": "See all our colors"
                     }, {
                         "title": "Classic Blue T-Shirt",
                         "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
-                        "subtitle": "100% Cotton, 200% Comfortable",
+                        "subtitle": "100% Cotton, 200% Comfortable"
                     }
                 ],
                 "buttons": [
