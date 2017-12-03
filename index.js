@@ -329,17 +329,9 @@ function showTop5AudioProjects() {
                     {
                         "title": "New GABC Album Produced by John Evans!",
                         "subtitle": "See all our colors",
-                        "default_action": {
-                            "type": "postback",
-                            "postback": SHOW_DETAILS_AUDIO_PROJECT,
-                        }
                     }, {
                         "title": "Faith-Based EP: 2nd album by Courtney Tarpley",
                         "subtitle": "See all our colors",
-                        "default_action": {
-                            "type": "postback",
-                            "postback": SHOW_DETAILS_AUDIO_PROJECT,
-                        }
                         // "buttons": [
                         //     {
                         //         "title": "View",
@@ -350,10 +342,6 @@ function showTop5AudioProjects() {
                     }, {
                         "title": "iVamos pa\' SXSW 2017!",
                         "subtitle": "100% Cotton, 200% Comfortable",
-                        "default_action": {
-                            "type": "postback",
-                            "postback": SHOW_DETAILS_AUDIO_PROJECT,
-                        }
                         // "buttons": [
                         //     {
                         //         "title": "View",
