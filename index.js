@@ -323,42 +323,26 @@ function showTop5AudioProjects() {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "list",
-                "top_element_style": "compact",
+                "template_type": "generic",
                 "elements": [
                     {
-                        "title": "New GABC Album Produced by John Evans!",
-                        "subtitle": "See all our colors",
                         "buttons": [
                             {
-                                "title": "View",
                                 "type": "postback",
-                                "postback": "a1"
-                            }
-                        ]
-                    }, {
-                        "title": "Faith-Based EP: 2nd album by Courtney Tarpley",
-                        "subtitle": "See all our colors",
-                        "buttons": [
-                            {
-                                "title": "View",
+                                "title": "New GABC Album Produced by John Evans!",
+                                "payload": TOTAL_FUNDED
+                            }, {
                                 "type": "postback",
-                                "postback": "a2"
-                            }
-                        ]
-                    }, {
-                        "title": "iVamos pa\' SXSW 2017!",
-                        "subtitle": "100% Cotton, 200% Comfortable",
-                        "buttons": [
-                            {
-                                "title": "View",
+                                "title": "Faith-Based EP: 2nd album by Courtney Tarpley",
+                                "payload": NUM_OF_PLEDGES
+                            }, {
                                 "type": "postback",
-                                "postback": "a3"
+                                "title": "iVamos pa\' SXSW 2017!",
+                                "payload": PERCENTAGE
                             }
                         ]
                     }
                 ]
-
             }
         }
     }
