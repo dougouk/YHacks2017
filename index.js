@@ -134,7 +134,7 @@ function handleMessage(sender_psid, received_message) {
             // const imageResponse = getImageResponse(picture_3);
             // callSendAPI(sender_psid, imageResponse);
 
-            const title = 'Top 10 Categories';
+            const title = 'Category Analysis';
             const message = 'Click on a different factor for a different analysis!';
             response = getTop10Trending(picture_balance, title, message);
             callSendAPI(sender_psid, response);
@@ -331,8 +331,7 @@ function showTop5AudioProjects() {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "list",
-                "top_element_style": "compact",
+                "template_type": "template",
                 "elements": [
                     {
                         "title": "New GABC Album Produced by John Evans!",
