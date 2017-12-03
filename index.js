@@ -220,13 +220,13 @@ function handlePostback(sender_psid, received_postback) {
             response = getTop10Trending(picture_pledges_count, title, message);
             break;
         case AUDIO1:
-            response = getAudioTitleMessage(title1, message1);
+            getAudioTitleMessage(title1, message1);
             break;
         case AUDIO2:
-            response = getAudioTitleMessage(title2, message1);
+            getAudioTitleMessage(title2, message1);
             break;
         case AUDIO3:
-            response = getAudioTitleMessage(title3, message1);
+            getAudioTitleMessage(title3, message1);
             break;
         case 'yes':
             response = {
