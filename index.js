@@ -190,15 +190,12 @@ function handleMessage(sender_psid, received_message) {
 
             let heatResponse = showImageTitleMessage(picture_heat_map, 'Heat Map', '');
             callSendAPI(sender_psid, heatResponse);
-        } else if (message.includes('details')) {
+        } else if (message.includes('black line')) {
             // Send a text blurb
             const initialResponse = {
-                'text': 'Showing details'
+                'text': 'The black lines on the graph represent predicted change. It can be a signal of growth, or loss.'
             };
             callSendAPI(sender_psid, initialResponse);
-
-            response = showDetails();
-            callSendAPI(sender_psid, response);
         } else {
             response = {
                 "text": `You sent the message: "${received_message.text}".`
