@@ -227,8 +227,8 @@ function handlePostback(sender_psid, received_postback) {
     const title5 = 'Product - Kelsey & Joe\'s Wedding Registry!' + '\nFunding raised - $6589.00' + '\nPercentage collected - 92%';
     const title6 = 'Product - David and Matt\'s Astrophotography Adventure' + '\nFunding raised - $2400.00' + '\nPercentage collected - 88%';
 
-    const message2 = 'Why successful?\nHigh cash collected %, partial forever funding' + '\nWhy unsuccessful?\nLow 100% conversion rate';
-    const message1 = 'Why successful?\nHigh cash collected %, high balance' + '\nWhy unsuccessful?\nLast minute conversions';
+    const message2 = 'Indicators of success:\nHigh cash collected %, partial forever funding' + '\nPain points?\nLow 100% conversion rate';
+    const message1 = 'Indicators of success:\nHigh cash collected %, high balance' + '\nPain points?\nLast minute conversions';
     console.log(payload);
     // Set the response based on the postback payload
     switch (payload) {
