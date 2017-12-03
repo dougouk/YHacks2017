@@ -123,10 +123,10 @@ function handleMessage(sender_psid, received_message) {
     if (message) {
         // Create the payload for a basic text message, which
         // will be added to the body of our request to the Send API
-        if (message.includes('top 10 trends')) {
+        if (message.includes('catergory analysis')) {
             // Send a text blurb
             const initialResponse = {
-                'text': 'Here are the top 10 trending projects!'
+                'text': 'Here is the analysis of categories!'
             };
             callSendAPI(sender_psid, initialResponse);
 
