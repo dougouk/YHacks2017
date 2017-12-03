@@ -247,13 +247,13 @@ function handlePostback(sender_psid, received_postback) {
             sendDetails(sender_psid, title3, message1);
             return;
         case TRAVEL1:
-            sendDetails(title4, message2);
+            sendDetails(sender_psid, title4, message2);
             return;
         case TRAVEL2:
-            sendDetails(title5, message2);
+            sendDetails(sender_psid, title5, message2);
             return;
         case TRAVEL3:
-            sendDetails(title6, message2);
+            sendDetails(sender_psid, title6, message2);
             return;
         case 'yes':
             response = {
