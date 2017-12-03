@@ -181,10 +181,15 @@ function handleMessage(sender_psid, received_message) {
 
             let travelResponse = showTop3Projects(projects, 'Travel & Outdoors');
             callSendAPI(sender_psid, travelResponse);
-        } else if (message.includes('start typing')) {
-            startTyping(sender_psid);
-        } else if (message.includes('stop typing')) {
-            stopTyping(sender_psid);
+        } else if(message.includes('heat map')) {
+            // Send a text blurb
+            const initialResponse = {
+                'text': 'Generating heat map...'
+            };
+            callSendAPI(sender_psid, initialResponse);
+
+            let heatResponse = showImageTitleMessage(picture_heat_map, 'Heat Map', '');
+            callSendAPI(sender_psid, heatResponse);
         } else if (message.includes('details')) {
             // Send a text blurb
             const initialResponse = {
@@ -408,45 +413,6 @@ function showTop3Projects(projects, category) {
     }
 }
 
-function showDetails() {
-    return {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "list",
-                "top_element_style": "compact",
-                "elements": [
-                    {
-                        "title": "Classic T-Shirt Collection",
-                        "subtitle": "See all our colors",
-                        "buttons": [
-                            {
-                                "title": "View",
-                                "type": "postback",
-                                'payload': ''
-                            }
-                        ]
-                    }, {
-                        "title": "Classic White T-Shirt",
-                        "subtitle": "See all our colors"
-                    }, {
-                        "title": "Classic Blue T-Shirt",
-                        "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
-                        "subtitle": "100% Cotton, 200% Comfortable"
-                    }
-                ],
-                "buttons": [
-                    {
-                        "title": "View More",
-                        "type": "postback",
-                        "payload": "payload"
-                    }
-                ]
-            }
-        }
-    }
-}
-
 const TOTAL_FUNDED = 'Total Funded';
 const NUM_OF_PLEDGES = 'Number of Pledges';
 const PERCENTAGE = '% Funded';
@@ -484,6 +450,27 @@ function getTop10Trending(graphImage, title, message) {
         }
     }
 }
+
+
+function showImageTitleMessage(graphImage, title, message) {
+    console.log('Image is ' + graphImage);
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": title,
+                        "subtitle": message,
+                        'image_url': graphImage
+                    }
+                ]
+            }
+        }
+    }
+}
+
 
 const AUDIO1 = 'Audio1';
 const AUDIO2 = 'Audio2';
