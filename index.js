@@ -463,20 +463,10 @@ const AUDIO1 = 'Audio1';
 const AUDIO2 = 'Audio2';
 const AUDIO3 = 'Audio3';
 
-function getAudioTitleMessage(title, message) {
-    return {
-        "attachment": {
+function getTravelTitleMessage(title, message) {
+    const initialResponse = {"text": `*${title}*` };
+    callSendAPI(sender_psid, initialResponse);
 
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [
-                    {
-                        "title": title,
-                        "subtitle": message
-                    }
-                ]
-            }
-        }
-    }
+   const initialResponse = {"text": message };
+    callSendAPI(sender_psid, initialResponse);
 }
