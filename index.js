@@ -218,7 +218,6 @@ function getImageResponse(imageUrl) {
                 "template_type": "generic",
                 "elements": [
                     {
-                        'title': 'Test title',
                         "image_url": imageUrl
                     }
                 ]
